@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.salestock</groupId>
+    <artifactId>ap-salestock</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>ap-salestock-infrastructure</artifactId>
+  
+  <dependencies>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.salestock</groupId>
+			<artifactId>ap-salestock-api</artifactId>
+			<version>${ap-salestock.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.salestock</groupId>
+			<artifactId>ap-salestock-domain</artifactId>
+			<version>${ap-salestock.version}</version>
+		</dependency>
+	</dependencies>
+</project>

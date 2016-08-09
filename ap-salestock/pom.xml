@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.salestock</groupId>
+	<artifactId>ap-salestock</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ap-salestock</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<ap-foundation.version>0.0.1-RELEASE</ap-foundation.version>
+		<ap-salestock.version>0.0.1-SNAPSHOT</ap-salestock.version>
+		<springboot.version>1.3.7.RELEASE</springboot.version>
+		<spring-data-releasetrain.version>Hopper-SR2</spring-data-releasetrain.version>
+		<springdata-elastic.version>2.0.1.RELEASE</springdata-elastic.version>
+	</properties>
+	<packaging>pom</packaging>
+
+	<dependencies>
+		<!-- Axon CQRS Framework -->
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-core</artifactId>
+		</dependency>
+
+		<!-- Common apache -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+
+		<!-- Lombok accessor injection etc -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+		<!-- javax -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-config</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-dependencies</artifactId>
+				<type>pom</type>
+				<version>${ap-foundation.version}</version>
+				<scope>import</scope>
+			</dependency>
+			
+			<dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data-releasetrain.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<type>pom</type>
+				<version>${springboot.version}</version>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<modules>
+		<module>ap-salestock-api</module>
+		<module>ap-salestock-domain</module>
+		<module>ap-salestock-infrastructure</module>
+		<module>ap-salestock-shared</module>
+	</modules>
+</project>
