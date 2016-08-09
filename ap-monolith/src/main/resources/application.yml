@@ -1,0 +1,42 @@
+debug: false
+
+spring:
+    application:
+        name: salestock-server
+        
+    datasource:
+      driver-class-name: org.postgresql.ds.PGSimpleDataSource
+      url: test
+      poolName: SpringBootHikariCP
+      username: postgres
+      password: admin  
+                    
+    messages:
+        basename: classpath:/i18n/messages
+        
+server:
+    port: 9000
+management:
+    port: 9001
+    
+    
+ctm:
+    axonCluster:
+        routingKey: com.ap.* 
+        clusterName: saleStockServer  
+        
+    async:
+        corePoolSize: 4
+        maxPoolSize: 20
+        queueCapacity: 1000       
+        
+    cors: 
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800
+        
+    mail:
+        from: starter@localhost    

@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ap</groupId>
+	<artifactId>ap-foundation-monolith</artifactId>
+	<version>0.0.1-RELEASE</version>
+	<packaging>jar</packaging>
+	
+	<properties>
+		<ap-foundation.version>0.0.1-RELEASE</ap-foundation.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-axon</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-config</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-persistence-base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-persistence-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-persistence-nosql</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-security-base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ap</groupId>
+			<artifactId>ap-foundation-security-jwt</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-dependencies</artifactId>
+				<type>pom</type>
+				<version>${ap-foundation.version}</version>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

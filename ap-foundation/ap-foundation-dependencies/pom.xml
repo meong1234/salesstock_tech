@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ap</groupId>
+	<artifactId>ap-foundation-dependencies</artifactId>
+	<version>0.0.1-RELEASE</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<lombok.version>1.16.8</lombok.version>
+		<guava.version>19.0</guava.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<javax.validation.version>1.1.0.Final</javax.validation.version>
+		<javax.inject.version>1</javax.inject.version>
+		<axon.version>2.4.4</axon.version>
+		
+		
+		<ap-foundation-axon.version>0.0.1-SNAPSHOT</ap-foundation-axon.version>
+		<ap-foundation-config.version>0.0.1-SNAPSHOT</ap-foundation-config.version>
+		<ap-foundation-persistence.version>0.0.1-SNAPSHOT</ap-foundation-persistence.version>
+		<ap-foundation-security.version>0.0.1-SNAPSHOT</ap-foundation-security.version>
+	</properties>
+
+	<dependencyManagement>
+
+		<dependencies>
+			<!-- Common apache -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+
+
+			<!-- Lombok accessor injection etc -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- guava -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<!-- javax -->
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>${javax.inject.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>javax.persistence</artifactId>
+				<version>2.1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${javax.validation.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.axonframework</groupId>
+				<artifactId>axon-core</artifactId>
+				<version>${axon.version}</version>
+			</dependency>
+
+			<!-- Foundation -->
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-axon</artifactId>
+				<version>${ap-foundation-axon.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-config</artifactId>
+				<version>${ap-foundation-config.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-persistence-base</artifactId>
+				<version>${ap-foundation-persistence.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-persistence-jpa</artifactId>
+				<version>${ap-foundation-persistence.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-persistence-nosql</artifactId>
+				<version>${ap-foundation-persistence.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-security-base</artifactId>
+				<version>${ap-foundation-security.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-security-jwt</artifactId>
+				<version>${ap-foundation-security.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

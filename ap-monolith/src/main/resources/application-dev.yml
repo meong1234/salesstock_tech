@@ -1,0 +1,129 @@
+## YAML Template.
+---
+
+debug: true
+
+logging:
+    level:
+        root: WARN
+        org.springframework: WARN
+        org.springframework.web: WARN
+        org.springframework.security: WARN
+        org.springframework.http.client: DEBUG
+        org.hibernate: OFF
+        org.hibernate.SQL : OFF
+        org.elasticsearch: DEBUG
+        jdbc: DEBUG
+            #aop: DEBUG
+            #dao: DEBUG
+            #orm: DEBUG
+            #amqp: DEBUG
+            #data: DEBUG
+            #transaction: DEBUG
+        org.axonframework: DEBUG
+        com.ap: DEBUG
+        
+spring:
+    profiles:
+        active: dev
+        
+    datasource:
+      driver-class-name: org.postgresql.ds.PGSimpleDataSource
+      url: jdbc:postgresql://localhost:5432/postgres
+      #url: jdbc:log4jdbc:postgresql://localhost:5432/postgres
+      #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      poolName: SpringBootHikariCP
+      username: postgres
+      password: admin  
+      
+    jpa:
+        show_sql: false  
+        hibernate:
+            ddl-auto: validate
+            #ddl-auto: create
+        
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false                       
+        
+    mail:
+        host: localhost
+        port: 25
+        username:
+        password:
+        
+    rabbitmq:
+        hostname: localhost
+        username: guest
+        password: guest
+        
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017
+            
+        elasticsearch:
+            cluster-name: elasticsearch
+            cluster-nodes: 127.0.0.1:9300
+            cluster-port: 9300
+            cluster-host: 127.0.0.1
+
+server:
+    port: 9000
+    compression:
+        enabled: false
+        mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json 
+        
+mongodb:
+    host: localhost
+    port: 27017
+    database: ctm
+    replica:
+        set: 127.0.0.1:27017,127.0.0.1:27027,127.0.0.1:27037
+        
+        
+ctm:        
+    mail:
+        from: development@localhost 
+        
+    security:
+        authentication:
+            Jwt.secret: -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxD6QynJJcnjNtzkBV+8NjFUQOp6gk6iWoKpfV7Yy2GoEcoyv7k02LtJG70z9CGwjAobwjtXcAu+BzxtmI592fjW1H0HKuVOSPhVEq0uZKOOI6A3SsJEr8E0NNASDtwvJVELyrqO/UBdefhY1lKwsEJAIQABkKBABOs2wVkglDiY5PhfGkf2vuLBnwDWIG217Eh7o4SWPyR567x9sCORf6cOE6glbpGnE4Y43n5IPZZBkXyH/kXEm0GWohBJ3RI8st2Gae8RIs/91c0m3/wUqiXF9zlmcbayKQTOUqUCuRkd3AwSBPBPCMzRAVIZ4qHXmOwgLp2oAlZKO7wnhH8HbYwIDAQAB-----END PUBLIC KEY-----
+                  
+    datasource: 
+        serverName: localhost
+        portNumber: 5432
+        databaseName: postgres
+        
+    redis:
+        host: localhost
+        port: 6379
+        password: 
+        usepool: true
+        maxActive: 1000
+        maxIdle: 1000
+        maxWaitMillis: 30000
+        
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        spark:
+            enabled: false
+            host: localhost
+            port: 9999
+        graphite:
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: ctm            
+        logs: # report metrics in the logs
+            enabled: false
+            reportFrequency: 60 # in seconds
+            
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queueSize: 512
+        
