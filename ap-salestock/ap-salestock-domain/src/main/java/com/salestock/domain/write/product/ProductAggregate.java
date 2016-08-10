@@ -55,7 +55,7 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 	}
 
 	/**
-	 * sell product.
+	 * deduct product.
 	 * 
 	 * @return
 	 */

@@ -73,6 +73,5 @@ public class ProductCommandHandler extends AbstractCommandHandler<ProductAggrega
 	@Override
 	public void setEventTemplate(EventTemplate template) {
 		this.eventTemplate = template;
-
 	}
 }
