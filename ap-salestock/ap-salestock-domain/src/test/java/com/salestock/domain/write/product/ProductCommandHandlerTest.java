@@ -54,7 +54,7 @@ public class ProductCommandHandlerTest extends BaseAggregateTest<ProductAggregat
 	}
 
 	public static ProductError createProductError() {
-		return new ProductError(PRODUCT, "error");
+		return new ProductError(PRODUCT, ORDERID, "error");
 	}
 
 	@Test

@@ -51,12 +51,8 @@ public class ProductCommandHandler extends AbstractCommandHandler<ProductAggrega
 
 	@CommandHandler
 	public void onOpnameProduct(OpnameProduct cmd) {
-		try {
-			ProductAggregate agg = this.aggLoad(cmd.getProductId());
-			agg.opnameProduct(cmd.getNewQty(), cmd.getNewPrice());
-		} catch (ProductException e) {
-			eventTemplate.publishEvent(new ProductError(cmd.getProductId(), e.getMessage()));
-		}
+		ProductAggregate agg = this.aggLoad(cmd.getProductId());
+		agg.opnameProduct(cmd.getNewQty(), cmd.getNewPrice());
 	}
 
 	@CommandHandler
@@ -65,7 +61,7 @@ public class ProductCommandHandler extends AbstractCommandHandler<ProductAggrega
 			ProductAggregate agg = this.aggLoad(cmd.getProductId());
 			agg.deductProduct(cmd.getOrderId(), cmd.getQty());
 		} catch (ProductException | IllegalArgumentException e) {
-			eventTemplate.publishEvent(new ProductError(cmd.getProductId(), e.getMessage()));
+			eventTemplate.publishEvent(new ProductError(cmd.getProductId(), cmd.getOrderId(), e.getMessage()));
 		}
 	}
 
