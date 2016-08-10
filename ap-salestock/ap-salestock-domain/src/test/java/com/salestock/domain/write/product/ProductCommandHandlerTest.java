@@ -19,12 +19,15 @@ import com.salestock.api.event.product.ProductDeducted;
 import com.salestock.api.event.product.ProductError;
 import com.salestock.api.event.product.ProductOpnamed;
 import com.salestock.api.event.product.ProductRegistered;
+import com.salestock.api.identifier.OrderId;
 import com.salestock.api.identifier.ProductId;
 import com.salestock.shared.Money;
 
 public class ProductCommandHandlerTest extends BaseAggregateTest<ProductAggregate> {
 
 	private static ProductId PRODUCT = new ProductId("productId");
+	
+	private static OrderId ORDERID = new OrderId("orderId");
 
 	public static RegisterProduct createRegisterProduct() {
 		return new RegisterProduct("BAJU BARU", 10, Money.idrMoney(new BigDecimal(2000)));
@@ -43,11 +46,11 @@ public class ProductCommandHandlerTest extends BaseAggregateTest<ProductAggregat
 	}
 	
 	public static DeductProduct createDeductProduct(int qty) {
-		return new DeductProduct(PRODUCT, qty);
+		return new DeductProduct(PRODUCT, ORDERID, qty);
 	}
 	
 	public static ProductDeducted createProductDeducted() {
-		return new ProductDeducted(PRODUCT, 5,  Money.idrMoney(new BigDecimal(2000)), Money.idrMoney(new BigDecimal(2000)), 5);
+		return new ProductDeducted(PRODUCT, ORDERID, 5,  Money.idrMoney(new BigDecimal(2000)), Money.idrMoney(new BigDecimal(2000)), 5);
 	}
 
 	public static ProductError createProductError() {

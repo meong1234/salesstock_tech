@@ -31,7 +31,6 @@ public class ProductRegistered extends BaseProductObject{
 		this.startingPrice = startingPrice;
 	}
 
-	
 	@JsonPOJOBuilder(withPrefix = "")
     public static final class ProductRegisteredBuilder {
     }

@@ -63,7 +63,7 @@ public class ProductCommandHandler extends AbstractCommandHandler<ProductAggrega
 	public void onDeductProduct(DeductProduct cmd) {
 		try {
 			ProductAggregate agg = this.aggLoad(cmd.getProductId());
-			agg.deductProduct(cmd.getQty());
+			agg.deductProduct(cmd.getOrderId(), cmd.getQty());
 		} catch (ProductException | IllegalArgumentException e) {
 			eventTemplate.publishEvent(new ProductError(cmd.getProductId(), e.getMessage()));
 		}
@@ -79,5 +79,4 @@ public class ProductCommandHandler extends AbstractCommandHandler<ProductAggrega
 		this.eventTemplate = template;
 
 	}
-
 }

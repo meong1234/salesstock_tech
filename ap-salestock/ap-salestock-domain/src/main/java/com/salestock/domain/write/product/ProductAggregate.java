@@ -1,14 +1,17 @@
 package com.salestock.domain.write.product;
 
+import java.math.BigDecimal;
+
 import org.axonframework.common.Assert;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 import org.axonframework.eventsourcing.annotation.EventSourcingHandler;
 
 import com.salestock.api.command.product.RegisterProduct;
+import com.salestock.api.event.product.ProductDeducted;
 import com.salestock.api.event.product.ProductOpnamed;
 import com.salestock.api.event.product.ProductRegistered;
-import com.salestock.api.event.product.ProductDeducted;
+import com.salestock.api.identifier.OrderId;
 import com.salestock.api.identifier.ProductId;
 import com.salestock.shared.Money;
 
@@ -56,15 +59,16 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 	 * 
 	 * @return
 	 */
-	public void deductProduct(int qty) {		
+	public void deductProduct(OrderId orderId, int qty) {		
 		Assert.isTrue(this.qty > qty, "not enaough qty for this product "+this.productId.toString());
 
 		apply(ProductDeducted
 				.builder()
 				.productId(this.productId)
+				.orderId(orderId)
 				.qty(qty)
 				.price(this.price)
-				.totalPrice(this.price.multiply(qty))
+				.totalPrice(this.price.multiply(new BigDecimal(qty)))
 				.endQty(this.qty - qty)
 				.build());
 	}
