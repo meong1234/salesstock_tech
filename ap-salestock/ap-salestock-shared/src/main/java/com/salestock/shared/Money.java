@@ -12,9 +12,11 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+@EqualsAndHashCode
 @Value
 @AllArgsConstructor
 @ToString
@@ -28,8 +30,6 @@ public class Money {
 	
 	private BigDecimal value;
 	
-	
-	
 	public Money multiply(int qty){
 		return new Money(this.currency, this.value.multiply(new BigDecimal(qty)));
 	}
@@ -39,6 +39,10 @@ public class Money {
 			return new Money(this.currency, this.value.add(money.getValue()));
 		} 
 		return this;
+	}
+	
+	public static Money idrMoney(BigDecimal value) {
+		return new Money("IDR", value);
 	}
 	
 	@JsonPOJOBuilder(withPrefix = "")

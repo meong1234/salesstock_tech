@@ -14,13 +14,13 @@
 			<artifactId>ap-salestock-api</artifactId>
 			<version>${ap-salestock.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.salestock</groupId>
 			<artifactId>ap-salestock-shared</artifactId>
 			<version>${ap-salestock.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.ap</groupId>
 			<artifactId>ap-foundation-persistence-nosql</artifactId>

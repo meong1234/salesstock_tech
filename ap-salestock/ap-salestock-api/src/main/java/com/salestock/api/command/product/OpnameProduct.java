@@ -1,5 +1,7 @@
 package com.salestock.api.command.product;
 
+import org.axonframework.common.Assert;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.salestock.api.BaseProductObject;
@@ -24,6 +26,9 @@ public class OpnameProduct extends BaseProductObject {
 	@Builder
 	public OpnameProduct(ProductId productId, int newQty, Money newPrice) {
 		super(productId);
+		
+		Assert.notNull(newPrice, "newPrice must not be null");
+		
 		this.newQty = newQty;
 		this.newPrice = newPrice;
 	}

@@ -5,9 +5,10 @@ import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 import org.axonframework.eventsourcing.annotation.EventSourcingHandler;
 
+import com.salestock.api.command.product.RegisterProduct;
 import com.salestock.api.event.product.ProductOpnamed;
 import com.salestock.api.event.product.ProductRegistered;
-import com.salestock.api.event.product.ProductSold;
+import com.salestock.api.event.product.ProductDeducted;
 import com.salestock.api.identifier.ProductId;
 import com.salestock.shared.Money;
 
@@ -23,13 +24,22 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 	private int qty;
 
 	private Money price;
+	
+	ProductAggregate() {
+	}
 
 	/**
 	 * Create / register new product.
 	 */
-	public ProductAggregate(String productName, int startingQty, Money startingPrice) {
-		apply(ProductRegistered.builder().productId(new ProductId()).productName(productName).startingQty(startingQty)
-				.startingPrice(startingPrice).build());
+	public ProductAggregate(RegisterProduct cmd) {
+		apply(ProductRegistered
+				.builder()
+				.productId(new ProductId())
+				.productName(cmd.getProductName())
+				.startingQty(cmd.getStartingQty())
+				.startingPrice(cmd.getStartingPrice())
+				.build()
+		);
 	}
 
 	/**
@@ -46,11 +56,17 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 	 * 
 	 * @return
 	 */
-	public void sellProduct(int qty) {		
+	public void deductProduct(int qty) {		
 		Assert.isTrue(this.qty > qty, "not enaough qty for this product "+this.productId.toString());
 
-		apply(ProductSold.builder().productId(this.productId).qty(qty).price(this.price)
-				.totalPrice(this.price.multiply(qty)).build());
+		apply(ProductDeducted
+				.builder()
+				.productId(this.productId)
+				.qty(qty)
+				.price(this.price)
+				.totalPrice(this.price.multiply(qty))
+				.endQty(this.qty - qty)
+				.build());
 	}
 
 	@EventSourcingHandler
@@ -67,7 +83,7 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 	}
 	
 	@EventSourcingHandler
-	private void onProductSold(ProductSold event) {
+	private void onProductSold(ProductDeducted event) {
 		this.qty -= event.getQty();
 	}
 }
