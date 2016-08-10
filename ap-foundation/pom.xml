@@ -21,6 +21,7 @@
 		<postgresql.version>9.4-1203-jdbc42</postgresql.version>
 		<logstash-logback-encoder.version>4.6</logstash-logback-encoder.version>
 		<axon.version>2.4.4</axon.version>
+		<hamcrest.version>1.3</hamcrest.version>
 
 
 		<springboot.version>1.3.7.RELEASE</springboot.version>
@@ -32,6 +33,7 @@
 		<ap-foundation-config.version>0.0.1-SNAPSHOT</ap-foundation-config.version>
 		<ap-foundation-persistence.version>0.0.1-SNAPSHOT</ap-foundation-persistence.version>
 		<ap-foundation-security.version>0.0.1-SNAPSHOT</ap-foundation-security.version>
+		<ap-foundation-axon.version>0.0.1-SNAPSHOT</ap-foundation-axon.version>
 	</properties>
 	<packaging>pom</packaging>
 
@@ -43,6 +45,7 @@
 		<module>ap-foundation-security</module>
 		<module>ap-foundation-dependencies</module>
 		<module>ap-foundation-monolith</module>
+		<module>ap-foundation-test</module>
 	</modules>
 
 	<dependencies>
@@ -125,6 +128,18 @@
 				<groupId>org.axonframework</groupId>
 				<artifactId>axon-core</artifactId>
 				<version>${axon.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.axonframework</groupId>
+				<artifactId>axon-test</artifactId>
+				<version>${axon.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${hamcrest.version}</version>
 			</dependency>
 			
 			<dependency>

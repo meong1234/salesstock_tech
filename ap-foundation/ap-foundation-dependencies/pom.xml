@@ -14,12 +14,14 @@
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<javax.inject.version>1</javax.inject.version>
 		<axon.version>2.4.4</axon.version>
-		
-		
+		<hamcrest.version>1.3</hamcrest.version>
+
+
 		<ap-foundation-axon.version>0.0.1-SNAPSHOT</ap-foundation-axon.version>
 		<ap-foundation-config.version>0.0.1-SNAPSHOT</ap-foundation-config.version>
 		<ap-foundation-persistence.version>0.0.1-SNAPSHOT</ap-foundation-persistence.version>
 		<ap-foundation-security.version>0.0.1-SNAPSHOT</ap-foundation-security.version>
+		<ap-foundation-test.version>0.0.1-SNAPSHOT</ap-foundation-test.version>
 	</properties>
 
 	<dependencyManagement>
@@ -72,7 +74,7 @@
 				<artifactId>validation-api</artifactId>
 				<version>${javax.validation.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.axonframework</groupId>
 				<artifactId>axon-core</artifactId>
@@ -82,40 +84,46 @@
 			<!-- Foundation -->
 			<dependency>
 				<groupId>com.ap</groupId>
+				<artifactId>ap-foundation-test</artifactId>
+				<version>${ap-foundation-test.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-axon</artifactId>
 				<version>${ap-foundation-axon.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-config</artifactId>
 				<version>${ap-foundation-config.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-persistence-base</artifactId>
 				<version>${ap-foundation-persistence.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-persistence-jpa</artifactId>
 				<version>${ap-foundation-persistence.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-persistence-nosql</artifactId>
 				<version>${ap-foundation-persistence.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-security-base</artifactId>
 				<version>${ap-foundation-security.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.ap</groupId>
 				<artifactId>ap-foundation-security-jwt</artifactId>
