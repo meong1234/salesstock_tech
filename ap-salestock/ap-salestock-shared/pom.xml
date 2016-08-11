@@ -6,4 +6,15 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>ap-salestock-shared</artifactId>
+  	<properties>
+		<libphonenumber>7.4.2</libphonenumber>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.googlecode.libphonenumber</groupId>
+			<artifactId>libphonenumber</artifactId>
+			<version>${libphonenumber}</version>
+		</dependency>
+	</dependencies>
 </project>
