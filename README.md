@@ -22,7 +22,7 @@ STACK DEVELOPMENT
 	
 Package Foundation
 -----------------
-letak core config untuk framewok-framework yang digunakan, spring boot, axon, spring dana sampai serialization
+letak core config untuk framewok-framework yang digunakan, spring boot, axon, spring data sampai serialization
 
 Package Salesstock
 -----------------
