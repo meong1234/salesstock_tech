@@ -11,6 +11,7 @@ import com.salestock.api.command.product.RegisterProduct;
 import com.salestock.api.event.product.ProductDeducted;
 import com.salestock.api.event.product.ProductOpnamed;
 import com.salestock.api.event.product.ProductRegistered;
+import com.salestock.api.event.product.ProductRetured;
 import com.salestock.api.identifier.OrderId;
 import com.salestock.api.identifier.ProductId;
 import com.salestock.shared.Money;
@@ -72,6 +73,15 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 				.endQty(this.qty - qty)
 				.build());
 	}
+	
+	/**
+	 * retur product.
+	 * 
+	 * @return
+	 */
+	public void returProduct(int qty) {		
+		apply(new ProductRetured(this.productId, qty, this.qty+qty));
+	}
 
 	@EventSourcingHandler
 	private void onProductRegistered(ProductRegistered event) {
@@ -89,5 +99,10 @@ public class ProductAggregate extends AbstractAnnotatedAggregateRoot<ProductId> 
 	@EventSourcingHandler
 	private void onProductSold(ProductDeducted event) {
 		this.qty -= event.getQty();
+	}
+	
+	@EventSourcingHandler
+	private void onProductRetured(ProductRetured event) {
+		this.qty += event.getReturQty();
 	}
 }

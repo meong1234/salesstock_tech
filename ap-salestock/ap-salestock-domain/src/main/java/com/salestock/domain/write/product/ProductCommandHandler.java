@@ -12,6 +12,7 @@ import com.ap.config.axon.util.AbstractCommandHandler;
 import com.salestock.api.command.product.DeductProduct;
 import com.salestock.api.command.product.OpnameProduct;
 import com.salestock.api.command.product.RegisterProduct;
+import com.salestock.api.command.product.ReturProduct;
 import com.salestock.api.event.product.ProductError;
 
 @Component
@@ -63,6 +64,12 @@ public class ProductCommandHandler extends AbstractCommandHandler<ProductAggrega
 		} catch (ProductException | IllegalArgumentException e) {
 			eventTemplate.publishEvent(new ProductError(cmd.getProductId(), cmd.getOrderId(), e.getMessage()));
 		}
+	}
+	
+	@CommandHandler
+	public void onReturProduct(ReturProduct cmd) {
+		ProductAggregate agg = this.aggLoad(cmd.getProductId());
+		agg.returProduct(cmd.getReturQty());
 	}
 
 	@Override
