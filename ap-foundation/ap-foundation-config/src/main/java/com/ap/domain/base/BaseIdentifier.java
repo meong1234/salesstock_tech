@@ -15,7 +15,6 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString
 @JsonSerialize(using = ToStringSerializer.class)
 public abstract class BaseIdentifier implements Serializable{
 	
@@ -28,4 +27,9 @@ public abstract class BaseIdentifier implements Serializable{
 	public BaseIdentifier() {
         this.identifier = IdentifierFactory.getInstance().generateIdentifier();
     }
+
+	@Override
+	public String toString() {
+		return this.identifier;
+	}	
 }

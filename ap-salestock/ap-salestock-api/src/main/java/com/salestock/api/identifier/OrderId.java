@@ -10,7 +10,6 @@ import lombok.ToString;
 import lombok.Value;
 
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @JsonDeserialize(builder = OrderId.OrderIdBuilder.class)
 @Value
 public class OrderId extends BaseIdentifier{

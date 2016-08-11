@@ -6,11 +6,9 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.Value;
 
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @JsonDeserialize(builder = ProductId.ProductIdBuilder.class)
 @Value
 public class ProductId extends BaseIdentifier{

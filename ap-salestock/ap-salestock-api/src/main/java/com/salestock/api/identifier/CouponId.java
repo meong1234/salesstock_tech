@@ -10,7 +10,6 @@ import lombok.ToString;
 import lombok.Value;
 
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @JsonDeserialize(builder = CouponId.CouponIdBuilder.class)
 @Value
 public class CouponId extends BaseIdentifier{
