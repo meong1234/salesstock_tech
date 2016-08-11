@@ -14,6 +14,7 @@ import com.salestock.shared.Money;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @JsonTypeInfo(  
@@ -26,7 +27,7 @@ import lombok.ToString;
 	    @Type(value = PercentageCoupon.class, name = "percentage")}) 
 
 @Getter
-@NoArgsConstructor
+@Setter
 @EqualsAndHashCode
 @ToString
 @JsonAutoDetect(fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE)
@@ -35,6 +36,9 @@ public abstract class BaseCoupon {
 	protected OffsetDateTime issuedDate;
 	
 	protected OffsetDateTime expiredDate;
+	
+	public BaseCoupon(){
+	}
 	
 	public BaseCoupon(OffsetDateTime issuedDate, OffsetDateTime expiredDate) {
 		Assert.notNull(issuedDate, "issuedDate can't null");
@@ -50,7 +54,7 @@ public abstract class BaseCoupon {
 	}
 
 	public boolean isExpired() {
-		return OffsetDateTime.now().isAfter(this.expiredDate);
+		return OffsetDateTime.now().isAfter(this.getExpiredDate());
 	}
 
 	public abstract Money calculateDiscount(Money price);

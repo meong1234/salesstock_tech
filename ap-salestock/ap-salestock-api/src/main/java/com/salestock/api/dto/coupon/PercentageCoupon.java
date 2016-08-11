@@ -13,14 +13,14 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.salestock.shared.Money;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.Value;
 
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @JsonDeserialize(builder = PercentageCoupon.PercentageCouponBuilder.class)
-@Value
+@Data
 @JsonAutoDetect(fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE)
 public class PercentageCoupon extends BaseCoupon {
 	

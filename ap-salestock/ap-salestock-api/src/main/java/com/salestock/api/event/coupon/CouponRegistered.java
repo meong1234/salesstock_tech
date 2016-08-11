@@ -1,5 +1,9 @@
 package com.salestock.api.event.coupon;
 
+import org.axonframework.common.Assert;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.salestock.api.BaseCouponObject;
@@ -24,6 +28,9 @@ public class CouponRegistered extends BaseCouponObject {
 	@Builder
 	public CouponRegistered(CouponId couponId, int startingQty, BaseCoupon info) {
 		super(couponId);
+		
+		Assert.notNull(info, "info can't be null");
+		
 		this.startingQty = startingQty;
 		this.info = info;
 	}

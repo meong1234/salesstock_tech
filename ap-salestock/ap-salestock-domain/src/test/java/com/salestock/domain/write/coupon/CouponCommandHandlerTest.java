@@ -1,7 +1,5 @@
 package com.salestock.domain.write.coupon;
 
-import static org.junit.Assert.fail;
-
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
@@ -28,9 +26,9 @@ import com.salestock.shared.Money;
 
 public class CouponCommandHandlerTest extends BaseAggregateTest<CouponAggregate>{
 	
-	private static CouponId COUPON = new CouponId("couponId");
+	public static CouponId COUPON = new CouponId("couponId");
 	
-	private static OrderId ORDERID = new OrderId("orderId");
+	public static OrderId ORDERID = new OrderId("orderId");
 	
 	public static BaseCoupon createCoupon() {
 		return new NominalCoupon(OffsetDateTime.now(), OffsetDateTime.now().plusDays(2), Money.idrMoney(new BigDecimal(9000)));
