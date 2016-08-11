@@ -171,4 +171,9 @@ public class CouponCommandHandlerTest extends BaseAggregateTest<CouponAggregate>
 		return new CouponCommandHandler();
 	}
 
+	@Override
+	protected void prepareOther(AbstractCommandHandler<CouponAggregate> commandHandler) {
+		// TODO Auto-generated method stub
+	}
+
 }

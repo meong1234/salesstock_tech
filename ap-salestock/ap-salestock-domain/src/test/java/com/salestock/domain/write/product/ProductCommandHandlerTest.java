@@ -212,4 +212,10 @@ public class ProductCommandHandlerTest extends BaseAggregateTest<ProductAggregat
 		return new ProductCommandHandler();
 	}
 
+	@Override
+	protected void prepareOther(AbstractCommandHandler<ProductAggregate> commandHandler) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

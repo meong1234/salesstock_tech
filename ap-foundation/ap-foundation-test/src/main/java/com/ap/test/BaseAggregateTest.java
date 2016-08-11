@@ -1,13 +1,13 @@
 package com.ap.test;
 
+import java.util.function.Consumer;
+
 import org.axonframework.eventhandling.EventTemplate;
 import org.axonframework.eventsourcing.AggregateFactory;
 import org.axonframework.eventsourcing.EventSourcedAggregateRoot;
 import org.axonframework.test.FixtureConfiguration;
 import org.axonframework.test.Fixtures;
 import org.junit.Before;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import com.ap.config.axon.util.AbstractCommandHandler;
 
@@ -17,6 +17,8 @@ public abstract class BaseAggregateTest <T extends EventSourcedAggregateRoot>{
     protected abstract Class<T> getAggregateType();
     protected abstract AggregateFactory<T> getAggregateFactory();
     protected abstract AbstractCommandHandler<T> getCommandHandler();
+    protected abstract void prepareOther(AbstractCommandHandler<T> commandHandler);
+    
     protected FixtureConfiguration<T> fixture; 
 	protected EventTemplate eventTemplate;
     
@@ -33,6 +35,7 @@ public abstract class BaseAggregateTest <T extends EventSourcedAggregateRoot>{
 
         commandHandler.setRepository(fixture.getRepository());
         commandHandler.setEventTemplate(eventTemplate);
+        prepareOther(commandHandler);
     }
 
 }
