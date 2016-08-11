@@ -9,6 +9,7 @@ import com.salestock.api.command.coupon.RegisterCoupon;
 import com.salestock.api.dto.coupon.BaseCoupon;
 import com.salestock.api.event.coupon.CouponDeducted;
 import com.salestock.api.event.coupon.CouponRegistered;
+import com.salestock.api.event.coupon.CouponRetured;
 import com.salestock.api.identifier.CouponId;
 import com.salestock.api.identifier.OrderId;
 
@@ -56,6 +57,15 @@ public class CouponAggregate extends AbstractAnnotatedAggregateRoot<CouponId>{
 		);
 	}
 	
+	/**
+	 * retur coupon.
+	 * 
+	 * @return
+	 */
+	public void returnCoupon() {
+		apply(new CouponRetured(this.couponId, this.qty + 1));
+	}
+	
 	@EventSourcingHandler
 	private void onCouponRegistered(CouponRegistered event) {
 		this.couponId = event.getCouponId();
@@ -65,7 +75,12 @@ public class CouponAggregate extends AbstractAnnotatedAggregateRoot<CouponId>{
 	
 	@EventSourcingHandler
 	private void onCouponDeducted(CouponDeducted event) {
-		this.qty--;
+		this.qty = event.getEndQty();
+	}
+	
+	@EventSourcingHandler
+	private void onCouponRetured(CouponRetured event) {
+		this.qty = event.getEndQty();
 	}
 
 }

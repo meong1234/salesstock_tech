@@ -11,11 +11,12 @@ import org.springframework.stereotype.Component;
 import com.ap.config.axon.util.AbstractCommandHandler;
 import com.salestock.api.command.coupon.DeductCoupon;
 import com.salestock.api.command.coupon.RegisterCoupon;
+import com.salestock.api.command.coupon.ReturCoupon;
 import com.salestock.api.event.coupon.CouponError;
 import com.salestock.domain.write.product.ProductException;
 
 @Component
-public class CouponCommandHandler  extends AbstractCommandHandler<CouponAggregate>{
+public class CouponCommandHandler extends AbstractCommandHandler<CouponAggregate>{
 
 	private Repository<CouponAggregate> repository;
 
@@ -58,6 +59,16 @@ public class CouponCommandHandler  extends AbstractCommandHandler<CouponAggregat
 	public void onRegisterCoupon(RegisterCoupon cmd) {
 		CouponAggregate agg = new CouponAggregate(cmd);
 		repository.add(agg);
+	}
+	
+	@CommandHandler
+	public void onReturCoupon(ReturCoupon cmd) {
+		try {
+			CouponAggregate agg = this.aggLoad(cmd.getCouponId());
+			agg.returnCoupon();
+		} catch (ProductException | IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Override
