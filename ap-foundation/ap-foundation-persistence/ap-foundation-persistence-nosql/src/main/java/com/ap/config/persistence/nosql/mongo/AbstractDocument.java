@@ -24,17 +24,17 @@ public abstract class AbstractDocument {
 
 	/** ID */
     @Id
-    private String id;
+    protected String id;
 
     /** Created date */
     @JsonIgnore
-    private LocalDateTime createdDate;
+    protected LocalDateTime createdDate;
 
     /** Last update */
     @JsonIgnore
-    private LocalDateTime lastUpdate;
+    protected LocalDateTime lastUpdate;
     
-    private Boolean active;
+    protected Boolean active;
     
     public AbstractDocument(String id) {
     	this.id = id;
