@@ -15,7 +15,7 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import lombok.extern.slf4j.Slf4j;
 
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
-@EnableJpaRepositories(value= {"com.ap"}, includeFilters = @ComponentScan.Filter(pattern = "..*JpaRepository", type = FilterType.REGEX))
+@EnableJpaRepositories(value= {"com"}, includeFilters = @ComponentScan.Filter(pattern = "..*JpaRepository", type = FilterType.REGEX))
 @EntityScan("com.ap")
 @Configuration
 @Slf4j

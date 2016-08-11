@@ -34,7 +34,7 @@ import com.mongodb.ServerAddress;
 import lombok.extern.slf4j.Slf4j;
 
 @EnableMongoRepositories(value = {
-		"com.ap" }, includeFilters = @ComponentScan.Filter(pattern = "..*MongoRepository", type = FilterType.REGEX))
+		"com" }, includeFilters = @ComponentScan.Filter(pattern = "..*MongoRepository", type = FilterType.REGEX))
 @Component
 @Slf4j
 public class MongoConfiguration  {

@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
-@EnableRedisRepositories(value= {"com.ap"}, includeFilters = @ComponentScan.Filter(pattern = "..*RedisRepository", type = FilterType.REGEX))
+@EnableRedisRepositories(value= {"com"}, includeFilters = @ComponentScan.Filter(pattern = "..*RedisRepository", type = FilterType.REGEX))
 @Slf4j
 public class RedisConfiguration {
 	

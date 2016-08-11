@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @EnableElasticsearchRepositories(value = {
-		"com.ap" }, includeFilters = @ComponentScan.Filter(pattern = "..*ElasticRepository", type = FilterType.REGEX))
+		"com" }, includeFilters = @ComponentScan.Filter(pattern = "..*ElasticRepository", type = FilterType.REGEX))
 @Component
 @Slf4j
 public class ElasticSearchConfiguration {
