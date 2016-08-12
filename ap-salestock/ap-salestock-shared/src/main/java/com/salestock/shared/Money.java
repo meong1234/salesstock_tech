@@ -31,7 +31,7 @@ public class Money {
 	@Builder
 	public Money(String currency, BigDecimal value) {
 		Assert.notEmpty(currency, "currency can't be null");
-		Assert.isTrue(ValidatorUtil.isPresent(value), "value is not present");
+		Assert.notNull(value, "value is not present");
 		
 		this.currency = currency;
 		this.value = value;
