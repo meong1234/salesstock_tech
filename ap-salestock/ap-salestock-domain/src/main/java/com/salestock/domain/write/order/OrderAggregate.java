@@ -46,7 +46,7 @@ public class OrderAggregate extends AbstractAnnotatedAggregateRoot<OrderId> {
 		// calculated discount
 		Money discount = Money.idrMoney(BigDecimal.ZERO);
 		if (coupon.isPresent()) {
-			coupon.get().getCouponInfo().calculateDiscount(basePrice);
+			discount = coupon.get().getCouponInfo().calculateDiscount(basePrice);
 		}
 
 		// calculate total price (base price - discount)
