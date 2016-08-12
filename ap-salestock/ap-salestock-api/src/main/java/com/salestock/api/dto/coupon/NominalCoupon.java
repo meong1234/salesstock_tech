@@ -30,6 +30,12 @@ public class NominalCoupon extends BaseCoupon {
 
 	@Override
 	public Money calculateDiscount(Money price) {
+		//nominal discount check the value if greater then just return the price so total price will be 0
+		if (nominalDiscount.getValue()
+				.compareTo(price.getValue()) > 0) {
+			return price;
+		}
+		
 		return this.nominalDiscount;
 	}
 	

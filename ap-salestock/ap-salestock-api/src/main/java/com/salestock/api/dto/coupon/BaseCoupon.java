@@ -54,7 +54,8 @@ public abstract class BaseCoupon {
 	}
 
 	public boolean isExpired() {
-		return OffsetDateTime.now().isAfter(this.getExpiredDate());
+		return OffsetDateTime.now().isAfter(this.getExpiredDate()) ||
+				 OffsetDateTime.now().isBefore(this.issuedDate);
 	}
 
 	public abstract Money calculateDiscount(Money price);
