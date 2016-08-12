@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.axonframework.common.Assert;
 
+import com.ap.misc.util.ValidatorUtil;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -50,6 +51,7 @@ public class SubmitOrder {
 		Assert.notNull(emailAddress, "emailAddress can't null");
 		Assert.notNull(phoneNumber, "phoneNumber can't null");
 		Assert.notNull(address, "address can't null");
+		Assert.isTrue(ValidatorUtil.isPresent(detail), "product not available");
 		Assert.isTrue(isUniqueProduct(detail), "one or more product is not unique");
 	
 		this.couponId = couponId;

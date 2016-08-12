@@ -25,9 +25,9 @@ import com.salestock.shared.Money;
 
 public class ProductCommandHandlerTest extends BaseAggregateTest<ProductAggregate> {
 
-	private static ProductId PRODUCT = new ProductId("productId");
+	public static ProductId PRODUCT = new ProductId("productId");
 	
-	private static OrderId ORDERID = new OrderId("orderId");
+	public static OrderId ORDERID = new OrderId("orderId");
 
 	public static RegisterProduct createRegisterProduct() {
 		return new RegisterProduct("BAJU BARU", 10, Money.idrMoney(new BigDecimal(2000)));

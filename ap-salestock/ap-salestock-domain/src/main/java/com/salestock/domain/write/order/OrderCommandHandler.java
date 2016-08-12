@@ -19,6 +19,8 @@ import com.salestock.domain.query.coupon.CouponDictionary;
 import com.salestock.domain.query.coupon.CouponService;
 import com.salestock.domain.query.product.ProductService;
 
+import lombok.Setter;
+
 @Component
 public class OrderCommandHandler extends AbstractCommandHandler<OrderAggregate>{
 	
@@ -26,8 +28,10 @@ public class OrderCommandHandler extends AbstractCommandHandler<OrderAggregate>{
 
 	private EventTemplate eventTemplate;
 	
+	@Setter
 	private CouponService couponService;
 	
+	@Setter
 	private ProductService productService;
 
 	public OrderCommandHandler() {
